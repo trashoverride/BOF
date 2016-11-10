@@ -1,0 +1,2 @@
+nasm -f elf -l teste.lst teste.asm
+gcc -o teste teste.o
